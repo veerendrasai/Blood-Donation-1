@@ -1,0 +1,103 @@
+<html>
+<head>
+	<link rel="shortcut icon" href="blood_icon.ico" />
+	<title> Availability of Blood in nearby Blood Banks </title>
+<style type="text/css">
+@font-face
+	{
+		font-family: "gunplay";
+		src:url("gunplay.ttf") format("truetype");
+	}
+	body
+	{
+		cursor: url('Arrow.cur'),auto;
+	}
+	#home
+{
+	width:150px;
+	text-align: center;
+	float:left;
+	background-color: cyan;
+	border: solid 2px black;
+	font-family: "gunplay";
+	font-size: 30px;
+	cursor: pointer;
+}
+</style>
+</head>
+<body background="Blood-Bank.jpg">
+	<div style="position:absolute; top:0px; left:0px; height:55px; right:0px;overflow:hidden; background-color: rgba(138,7,7,0.6)">
+		<p style="font-family: 'gunplay';font-size: 30px;margin-left: 385px;margin-top: 10px;">
+			Availability of Blood in nearby Blood Banks
+		</p>
+	</div>
+	<div id="content" style="position:absolute; top:55px; bottom:0px; left:200px; right:200px; overflow:auto; background-color: rgba(255,150,150,0.9)" >
+    	<div id="map" style="left: 30px;width:900px;height:560px;background:yellow;top: 20px;"></div>
+    </div>
+	<div id="header" style="position:absolute; top:0px; left:0px; height:130px; right:0px;overflow:hidden;">
+		
+		<div style="font-family: 'gunplay';margin-left: 10px;margin-top: 6px;" id="home" onclick="location.href='index.html';" onmouseenter="this.style.background='#00bcd4';hh.style.display='block';" onmouseleave="this.style.background='cyan';hh.style.display='none';" style="height: 30px;">
+			Home
+			<div id="hh" style="position:relative;background-color: yellow;height:4px;top:0px;width:100%;display: none;">
+			</div>
+		</div>	
+
+    </div>
+    <div id="navigation" style="position: absolute; top: 75px; left:0px; right: 1115px; bottom: 0px ;">
+    </div>
+
+
+
+    <script>
+		function myMap() {
+			var map = new google.maps.Map(document.getElementById("map"), {
+				center: {lat: -34.397, lng: 150.644},
+	        	zoom: 15
+			});
+			infoWindow = new google.maps.InfoWindow;
+			var service = new google.maps.places.PlacesService(map);
+	        if (navigator.geolocation) {
+	        	navigator.geolocation.getCurrentPosition(function(position) {
+			        var pos = {
+			        	lat: position.coords.latitude,
+			            lng: position.coords.longitude
+			        };
+			        infoWindow.setPosition(pos);
+			        infoWindow.setContent('Here is your Location with nearby Hospitals in 5km range');
+			        infoWindow.open(map);
+			        map.setCenter(pos);
+			        service.nearbySearch({
+			       		location: pos,
+			        	radius: 5000,
+			        	type: ['hospital'],
+			        	openNow: true
+			        	}, callback);
+
+			        function callback(results, status) {
+			        	if (status === google.maps.places.PlacesServiceStatus.OK) {
+			        		for (var i = 0; i < results.length; i++) {
+			            		createMarker(results[i]);
+			        		}
+			        	}
+		      		}
+		    		function createMarker(place) {
+		        		var placeLoc = place.geometry.location;
+		        		var marker = new google.maps.Marker({
+			        		map: map,
+			        		position: place.geometry.location
+			        	});
+				        google.maps.event.addListener(marker, 'click', function() {
+			    	    	infowindow.setContent(place.name);
+			        		infowindow.open(map, this);
+			        	});
+		      		}
+	        	});
+	        } else { 
+		    	x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+		
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAirt1pQzJtrnWIXQ5eIpEsBMOedo66xro&libraries=places&callback=myMap"></script>
+</body>
+</html>

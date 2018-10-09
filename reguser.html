@@ -1,0 +1,328 @@
+<html>
+<head>
+<link rel="shortcut icon" href="blood_icon.ico" />
+	<title> Registration Form for Users </title>
+
+<script src="jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+
+function cleardetails()
+{
+	    document.getElementById("name").value='';
+		document.getElementById("dob").value='';
+		document.getElementById("email").value='';
+		document.getElementById("pass").value='';
+		document.getElementById("repass").value='';
+		document.getElementById("mobile").value='';
+		document.getElementById("address").value='';
+}
+
+
+$(document).ready(function ()
+	{
+		$("#suu").click(function()
+{
+
+		$("#details").fadeIn(500);
+});
+
+$("#close").click(function()
+{
+	$("#details").fadeOut(500);
+});
+
+});
+
+function validateEmail(emailField){
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false) 
+        {
+            alert('Invalid Email Address');
+            document.getElementById("email").value="";
+            return false;
+        }
+
+        return true;
+
+}
+
+
+
+	function signupUser() 
+	{
+		var nam, dobb, emai, pas, repas, mobil, addres,bgroup;
+		nam    = document.getElementById("name").value;
+		dobb   = document.getElementById("dob").value;
+		emai   = document.getElementById("email").value;
+		pas    = document.getElementById("pass").value;
+		repas  = document.getElementById("repass").value;
+		mobil  = document.getElementById("mobile").value;
+		addres = document.getElementById("address").value;
+		if(document.getElementById("aplus").checked)
+		{
+			bgroup=document.getElementById("aplus").value;
+		}
+		if(document.getElementById("a").checked)
+		{
+			bgroup=document.getElementById("a").value;
+		}
+		if(document.getElementById("bplus").checked)
+		{
+			bgroup=document.getElementById("bplus").value;
+		}
+		if(document.getElementById("b").checked)
+		{
+			bgroup=document.getElementById("b").value;
+		}
+		if(document.getElementById("oplus").checked)
+		{
+			bgroup=document.getElementById("oplus").value;
+		}
+		if(document.getElementById("o").checked)
+		{
+			bgroup=document.getElementById("o").value;
+		}
+		if(document.getElementById("abplus").checked)
+		{
+			bgroup=document.getElementById("abplus").value;
+		}
+		if(document.getElementById("ab").checked)
+		{
+			bgroup=document.getElementById("ab").value;
+		}
+
+		document.getElementById("getname").innerHTML="Name: "+nam;
+		document.getElementById("getdob").innerHTML="Date of Birth: "+dobb;
+		document.getElementById("getemail").innerHTML="Email: "+emai;
+		document.getElementById("getpas").innerHTML="Password: "+pas;
+		document.getElementById("getmobil").innerHTML="Mobile No: "+mobil;
+		document.getElementById("getaddres").innerHTML="Address: "+addres;
+		document.getElementById("getblood").innerHTML="Blood Group: "+bgroup;
+
+		if(document.getElementById("name").value=='' || document.getElementById("dob").value=='' || document.getElementById("email").value=='' || document.getElementById("pass").value=='' || document.getElementById("repass").value=='' || document.getElementById("mobile").value=='' || document.getElementById("address").value=='')
+	{
+		$(document).ready(function ()
+	{
+		$("#details").fadeIn(0).dequeue().fadeOut(0);
+});
+		alert("Please Enter all the Details");
+	}
+
+	}
+
+function letter()
+{
+	var charCode = event.keyCode;
+	if((charCode>64 && charCode<91) || (charCode>96 && charCode<123) || charCode == 32)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function passcheck()
+{
+	var pwl = document.getElementById("pass").value.length;
+	if((pwl<6 || pwl>10) && document.getElementById("pass").value!='')
+	{
+		alert("Enter Password Length between 6 and 10");
+		document.getElementById("pass").value="";
+	}
+}
+
+function repasscheck()
+{
+	var pw = document.getElementById("repass").value;
+	if(pw != document.getElementById("pass").value && document.getElementById("repass").value!='')
+	{
+		alert("Please Enter Same Password as in Password field");
+		document.getElementById("repass").value="";
+	}
+	
+}
+
+
+function address()
+{
+	var charCode = event.keyCode;
+	if((charCode>=44 && charCode<=58) || (charCode>64 && charCode<91) || (charCode>96 && charCode<123) || charCode == 32)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function checkmobile()
+{
+	var mo = document.getElementById("mobile").value;
+	
+	if(mo.length != 10 && document.getElementById("mobile").value!='')
+	{
+		alert("Please Enter Correct Mobile No. of 10 digits");
+		document.getElementById("mobile").value="";
+	}
+}
+
+function checkaddress()
+{
+	var ad = document.getElementById("address").value;
+	
+}
+
+function checkname()
+{
+	var ad = document.getElementById("name").value;
+	
+}
+
+function checkdate()
+{
+	var da = document.getElementById("dob").value;
+	
+}
+
+function mobile()
+{
+	var charCode = event.keyCode;
+	if((charCode>=48 && charCode<=57))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+</script>
+
+<style type="text/css">
+
+#details
+{
+	background-color: #adff2f;
+	position: absolute;
+	display: none;
+	width: 60%;
+	left:20%;
+	top:16%;
+	border: 2px solid black;
+	word-wrap: break-word;
+}
+
+#getname,#getdob,#getemail,#getpas,#getmobil,#getaddres,#getblood
+{
+font-family: "gunplay";
+font-size: 25px;
+margin-left: 15px;
+}
+
+#success
+{
+font-family: "gunplay";
+font-size: 20px;
+text-align: center;
+}
+
+#home
+{
+	
+	width:150px;
+	text-align: center;
+	float:center;
+	background-color: cyan;
+	border: solid 2px black;
+	font-family: "Berlin Sans FB";
+	font-size: 30px;
+	cursor: pointer;
+}
+#close
+{
+	margin-left: 45%;
+	margin-bottom: 15px;
+}
+body
+	{
+		cursor: url('Arrow.cur'),auto;
+	}
+@font-face
+{
+	font-family: "gunplay";
+	src:url("gunplay.ttf") format("truetype");
+}
+</style>
+</head>
+<body background="Blood-Bank.jpg" style="font-family: 'gunplay';">
+	<div style="position:absolute; top:0px; left:0px; height:55px; right:0px;overflow:hidden; background-color: rgba(138,7,7,0.6)">
+		<p style="font-family: 'gunplay';font-size: 30px;margin-left: 520px;margin-top: 10px;">Registration Form</p>
+	</div>
+		<div id="content" style="position:absolute; top:75px; bottom:0px; left:16%; right:16%; overflow:auto; background-color: rgba(255,255,255,0.6)" >
+	    	<p  id="h1" style="font-family:'gunplay';font-size: 35px;background-color: cyan">FOR USERS</p>
+
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Name:</p>
+			<input type="text" id="name" style="font-family:'gunplay';font-size: 18px;" onkeypress="return letter()" onblur="checkname()" required>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Date of Birth:</p>
+			<input type="date" id="dob" style="font-family:'gunplay';font-size: 18px;" onblur="checkdate()" required>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Email:</p>
+			<input type="email" id="email" style="font-family:'gunplay';font-size: 18px;" onblur="validateEmail(this);" required>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Password:</p>
+			<input type="password" id="pass" style="font-family:'gunplay';font-size: 18px;" onblur="passcheck()" required>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Re-enter Password:</p>
+			<input type="password" id="repass" style="font-family:'gunplay';font-size: 18px;" onblur="repasscheck()" required>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Mobile No.:</p>
+			<input type="text" id="mobile" style="font-family:'gunplay';font-size: 18px;" onkeypress="return mobile()" onblur="checkmobile()" required>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Address:</p>
+			<textarea id="address" rows="3" style="font-family:'gunplay';font-size: 18px;" onkeypress="return address()" onblur="checkaddress()" required></textarea>
+			
+			<p  style="font-family:'gunplay';font-size: 25px;background-color: cyan">Blood Group:</p>
+			<input type="radio" id="aplus" name="group" value="A+" checked>A+
+			<input type="radio" id="a" style="font-family:'gunplay';font-size: 18px;"  name="group" value="A">A
+			<input type="radio" id="bplus" style="font-family:'gunplay';font-size: 18px;"  name="group" value="B+">B+
+			<input type="radio" id="b" style="font-family:'gunplay';font-size: 18px;"  name="group" value="B">B
+			<input type="radio" id="oplus" style="font-family:'gunplay';font-size: 18px;" name="group"  value="O">O
+			<input type="radio" id="o" style="font-family:'gunplay';font-size: 18px;"  name="group" value="O+">O+
+			<input type="radio" id="abplus" style="font-family:'gunplay';font-size: 18px;"  name="group" value="AB+">AB+
+			<input type="radio" id="ab" style="font-family:'gunplay';font-size: 18px;"  name="group" value="AB">AB
+			<p><br><button id="suu" style="font-family:'gunplay';font-size: 25px;background-color: cyan" onclick="signupUser()">Sign Up</button></p><br><br><br>
+
+
+	    </div>
+		<div id="header" style="position:absolute; top:0px; left:0px; height:130px; right:0px;overflow:hidden;">
+			<div style="font-family: 'gunplay';margin-left: 10px;margin-top: 6px;" id="home" onclick="location.href='index.html';" onmouseenter="this.style.background='#00bcd4';hh.style.display='block';" onmouseleave="this.style.background='cyan';hh.style.display='none';" style="height: 30px;">
+			Home
+			<div id="hh" style="position:relative;background-color: yellow;height:4px;top:0px;width:100%;display: none;">
+			</div>
+		</div>	
+	    </div>
+	    <div id="navigation" style="position: absolute; top: 75px; left:0px; right: 1115px; bottom: 0px ;">
+	</div>
+
+	<div id="details">
+	<p id="success">Sign Up Successfully!</p>
+	<p id="getname"></p>
+	<p id="getdob"></p>
+	<p id="getemail"></p>
+	<p id="getpas"></p>
+	<p id="getmobil"></p>
+	<p id="getaddres"></p>
+	<p id="getblood"></p>
+
+	<button id="close" style="font-family:'gunplay';font-size: 25px;background-color: cyan" onclick="cleardetails()">Close</button>
+	</div>
+	
+</body>
+</html>

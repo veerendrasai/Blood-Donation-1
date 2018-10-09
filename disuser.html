@@ -1,0 +1,84 @@
+<html>
+<head>
+	<link rel="shortcut icon" href="blood_icon.ico" />
+	<title> Discussion Forum For Users </title>
+<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		function fun()
+		{
+
+			if(document.getElementById("t1").value.length!=0 && document.getElementById("t2").value.length!=0)
+			{
+				document.getElementById("h1").style.display="none";
+			document.getElementById("h2").style.display="none";
+			document.getElementById("t1").style.display="none";
+			document.getElementById("t2").style.display="none";
+			document.getElementById("b1").style.display="none";
+			document.getElementById("h3").style.display="block";
+			document.getElementById("b2").style.display="block";
+			document.getElementById("t1").value="";
+			document.getElementById("t2").value="";
+		}
+		else
+		{
+			alert("Please Enter in Both Fields");
+		}
+		}
+		function fun1()
+		{
+			document.getElementById("h1").style.display="block";
+			document.getElementById("h2").style.display="block";
+			document.getElementById("t1").style.display="block";
+			document.getElementById("t2").style.display="block";
+			document.getElementById("b1").style.display="block";
+			document.getElementById("h3").style.display="none";
+			document.getElementById("b2").style.display="none";
+		}
+</script>
+<style type="text/css">
+body
+	{
+		cursor: url('Arrow.cur'),auto;
+	}	@font-face
+	{
+		font-family: "gunplay";
+		src:url("gunplay.ttf") format("truetype");
+	}
+	#home
+	{
+		width:150px;
+		text-align: center;
+		float:left;
+		background-color: cyan;
+		border: solid 2px black;
+		font-size: 30px;
+		font-family: "gunplay";
+		cursor: pointer;	
+	}
+</style>
+</head>
+<body background="Blood-Bank.jpg">
+	<div style="position:absolute; top:0px; left:0px; height:55px; right:0px;overflow:hidden; background-color: rgba(138,7,7,0.6)">
+		<p style="font-family: 'gunplay';font-size: 30px;margin-left: 470px;margin-top: 10px;">Discussion Forum For Users</p>
+	</div>
+	<div id="content" style="position:absolute; top:75px; bottom:0px; left:200px; right:200px; overflow:auto; background-color: rgba(255,255,255,0.8)" >
+    	<p id=h1 style="font-family:'gunplay';font-size: 25px;background-color: cyan">Enter Title of Discussion</p>
+		<textarea id=t1 rows="1" cols="100" style="font-family:'gunplay';font-size: 18px;"></textarea>
+		<p id=h2 style="font-family:'gunplay';font-size: 25px;background-color: cyan">Enter Topic to Discuss</p>
+		<textarea id=t2 rows="8" cols="100" style="font-family:'gunplay';font-size: 18px;"></textarea><br>
+		<p id=h3 style="font-family:'gunplay';font-size: 25px;background-color: cyan;display: none">Thanks Your 	Response has been recorded.
+		</p>
+		<button id=b1 style="background-color: cyan;font-family:'gunplay';font-size: 30px;margin-top: 10px" onclick="fun()">SUBMIT</button>
+		<button id=b2 style="background-color: cyan;font-family:'gunplay';font-size: 30px;margin-top: 10px;display: none" onclick="fun1()">Discuss Again</button>
+    </div>
+	<div id="header" style="position:absolute; top:0px; left:0px; height:130px; right:0px;overflow:hidden;">
+		<div style="font-family: 'gunplay';margin-left: 10px;margin-top: 6px;" id="home" onclick="location.href='index.html';" onmouseenter="this.style.background='#00bcd4';hh.style.display='block';" onmouseleave="this.style.background='cyan';hh.style.display='none';" style="height: 30px;">
+			Home
+			<div id="hh" style="position:relative;background-color: yellow;height:4px;top:0px;width:100%;display: none;">
+			</div>
+		</div>	
+    </div>
+    <div id="navigation" style="position: absolute; top: 75px; left:0px; right: 1115px; bottom: 0px ;">
+    </div>
+</body>
+</html>
